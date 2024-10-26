@@ -12,8 +12,8 @@ WBT_PATH = "WhiteboxTools_linux_amd64/WBT"
 WBT_URL = "https://www.whiteboxgeo.com/WBT_Linux/WhiteboxTools_linux_amd64.zip"
 
 
-def download_wbt(url):
-    response = requests.get(url)
+def download_wbt():
+    response = requests.get(WBT_URL)
     with zipfile.ZipFile(io.BytesIO(response.content), "r") as zip_ref:
         zip_ref.extractall()
     exe_path = WBT_PATH + "/whitebox_tools"
@@ -22,7 +22,7 @@ def download_wbt(url):
 
 
 if not Path(WBT_PATH).exists():
-    download_wbt(url=WBT_URL)
+    download_wbt()
 
 os.environ["WBT_PATH"] = WBT_PATH
 wbt = whitebox.WhiteboxTools()
