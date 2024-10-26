@@ -18,6 +18,6 @@ if not Path(WBT_PATH).exists():
 st.write("Hi there!")
 
 os.environ["WBT_PATH"] = WBT_PATH
-wbt = whitebox.WhiteboxTools()
+# wbt = whitebox.WhiteboxTools()
 wbt.set_whitebox_dir(WBT_PATH)
 st.write(wbt.version())
