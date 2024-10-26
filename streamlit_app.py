@@ -15,6 +15,6 @@ if not Path(WBT_PATH).exists():
     with zipfile.ZipFile(io.BytesIO(response.content), "r") as zip_ref:
         zip_ref.extractall()
 
-os.environ[WBT_PATH] = WBT_PATH
+os.environ["WBT_PATH"] = WBT_PATH
 st.write("Hi there!")
 wbt = whitebox.WhiteboxTools()
