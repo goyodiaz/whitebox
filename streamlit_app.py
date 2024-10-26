@@ -1,5 +1,6 @@
 import io
 import os
+import stat
 import zipfile
 from pathlib import Path
 
@@ -14,7 +15,10 @@ if not Path(WBT_PATH).exists():
     response = requests.get(WBT_URL)
     with zipfile.ZipFile(io.BytesIO(response.content), "r") as zip_ref:
         zip_ref.extractall()
-
+    exe_path = WBT_PATH + "/whitebox_tools"
+    st = os.stat(exe_path)
+    os.chmod(exe_path, st.st_mode | stat.S_IEXEC)
+    
 st.write("Hi there!")
 
 os.environ["WBT_PATH"] = WBT_PATH
