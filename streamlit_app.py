@@ -16,8 +16,8 @@ if not Path(WBT_PATH).exists():
     with zipfile.ZipFile(io.BytesIO(response.content), "r") as zip_ref:
         zip_ref.extractall()
     exe_path = WBT_PATH + "/whitebox_tools"
-    st = os.stat(exe_path)
-    os.chmod(exe_path, st.st_mode | stat.S_IEXEC)
+    st_result = os.stat(exe_path)
+    os.chmod(exe_path, st_result.st_mode | stat.S_IEXEC)
     
 st.write("Hi there!")
 
